@@ -6,14 +6,16 @@ bits 16
 ; Bootloader Entry Point
 ; ---------------------
 start:
-    cli                     ; Clear interrupts
-    xor     ax, ax
-    mov     ds, ax
-    mov     es, ax
+    ;cli                     ; Clear interrupts
+    ;xor     ax, ax
+    ;mov     ds, ax
+    ;mov     es, ax
 
     ; Print message before entering 32-bit mode
     mov     si, stage2_msg
     call    print_string
+
+    cli
 
     ; Set up GDT for 32-bit mode
     lgdt    [gdt_descriptor]  ; Load GDT descriptor
